@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Goods {
+    // 20211130
     // id 编号  | gname | gprice | gbuyDate | gfell | createBy | createDate | updateBy | updateDate
     private String id; //编号
     private String gname; // 物品名称
