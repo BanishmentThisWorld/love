@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class Goods {
-    // id   | gname | gprice | gbuyDate | gfell | createBy | createDate | updateBy | updateDate
+    // id 编号  | gname | gprice | gbuyDate | gfell | createBy | createDate | updateBy | updateDate
     private String id; //编号
     private String gname; // 物品名称
     private String gprice; // 物品价格
