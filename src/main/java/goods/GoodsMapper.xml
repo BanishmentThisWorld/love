@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods.GoodsMapper">
+
+    <select id="getGoods" parameterType="java.lang.String" resultType="goods.Goods">
+        select * from goods where gname like '%${gname}%'
+         and delFlag = 0
+         order by createDate desc
+    </select>
+
+    <!-- 添加-->
+    <insert id="addGoods" parameterType="goods.Goods">
+        insert into goods (gname,gprice,gbuyDate,gfell,createBy,createDate,delFlag)
+         values (#{gname},#{gprice},#{gbuyDate},#{gfell},#{createBy},now(),0)
+    </insert>
+    <!-- 修改 -->
+    <update id="setGoods" parameterType="goods.Goods">
+        update goods set gname=#{gname},gprice=#{gprice},gbuyDate=#{gbuyDate},gfell=#{gfell},
+         updateBy=#{updateBy},updateDate= now(),delFlag=#{delFlag}
+        where id=#{id}
+    </update>
+    <!-- 删除 -->
+    <update id="delGoods" parameterType="java.lang.String">
+        update goods set delFlag=1 where id in
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>
